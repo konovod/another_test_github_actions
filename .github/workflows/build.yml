@@ -1,0 +1,34 @@
+name: Build Every Commit
+
+on:
+    push:
+        branches: [ master ]
+    pull_request:
+        branches: [ master ]
+
+jobs:
+    build-windows-x64:
+      runs-on: windows-latest
+      steps:
+      - uses: actions/checkout@v2
+      - name: Build
+        shell: cmd
+        run: |
+          call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvars64.bat"
+          cd release
+          cl /O2 /MT check.cpp
+          dir
+          check.exe
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: fft_${{github.sha}}
+          path: release/check.exe
+    build-linux:
+      runs-on: ubuntu-latest
+      steps:
+      - uses: actions/checkout@v2
+      - name: Build
+          run: make
+      - name: Test
+          run: ./check
