@@ -1,6 +1,6 @@
 /*
     dbc_fft.h - public domain single-file FFT library.
-    Version: alpha.1.
+    Version: alpha.2.
     This is intended to be easy to use and reasonably efficient
     complex FFT implementation for arbitrary (e.g. non-power-of-2) input
     size.
@@ -999,6 +999,9 @@ DBCF_DECL_SIMD4F DBCF_DEF_SIMD_LOAD (dbcF_load4f_aligned ,dbcf_simd4f,16)
 DBCF_DECL_SIMD4F DBCF_DEF_SIMD_STORE(dbcF_store4f_aligned,dbcf_simd4f,16)
 DBCF_DECL_SIMD4F static dbcf_simd4f dbcF_set4f(float v0,float v1,float v2,float v3) {return (__extension__ (dbcf_simd4f){v0,v1,v2,v3});}
 DBCF_DECL_SIMD4F static dbcf_simd4f dbcF_fill4f(float v) {return dbcF_set4f(v,v,v,v);}
+DBCF_DECL_SIMD4F static dbcf_simd4f dbcF_add4f(dbcf_simd4f l,dbcf_simd4f r) {return l+r;}
+DBCF_DECL_SIMD4F static dbcf_simd4f dbcF_sub4f(dbcf_simd4f l,dbcf_simd4f r) {return l-r;}
+DBCF_DECL_SIMD4F static dbcf_simd4f dbcF_mul4f(dbcf_simd4f l,dbcf_simd4f r) {return l*r;}
 #endif
 #if !defined(DBC_FFT_NO_DOUBLE) && !defined(DBCF_NO_SIMD2D)
 DBCF_DECL_SIMD2D DBCF_DEF_SIMD_LOAD (dbcF_load2d ,dbcf_simd2d,1)
@@ -1007,6 +1010,9 @@ DBCF_DECL_SIMD2D DBCF_DEF_SIMD_LOAD (dbcF_load2d_aligned ,dbcf_simd2d,16)
 DBCF_DECL_SIMD2D DBCF_DEF_SIMD_STORE(dbcF_store2d_aligned,dbcf_simd2d,16)
 DBCF_DECL_SIMD2D static dbcf_simd2d dbcF_set2d(double v0,double v1) {return (__extension__ (dbcf_simd2d){v0,v1});}
 DBCF_DECL_SIMD2D static dbcf_simd2d dbcF_fill2d(double v) {return dbcF_set2d(v,v);}
+DBCF_DECL_SIMD2D static dbcf_simd2d dbcF_add2d(dbcf_simd2d l,dbcf_simd2d r) {return l+r;}
+DBCF_DECL_SIMD2D static dbcf_simd2d dbcF_sub2d(dbcf_simd2d l,dbcf_simd2d r) {return l-r;}
+DBCF_DECL_SIMD2D static dbcf_simd2d dbcF_mul2d(dbcf_simd2d l,dbcf_simd2d r) {return l*r;}
 #endif
 #if !defined(DBC_FFT_NO_FLOAT) && !defined(DBCF_NO_SIMD8F)
 DBCF_DECL_SIMD8F DBCF_DEF_SIMD_LOAD (dbcF_load8f ,dbcf_simd8f,1)
@@ -1015,6 +1021,9 @@ DBCF_DECL_SIMD8F DBCF_DEF_SIMD_LOAD (dbcF_load8f_aligned ,dbcf_simd8f,32)
 DBCF_DECL_SIMD8F DBCF_DEF_SIMD_STORE(dbcF_store8f_aligned,dbcf_simd8f,32)
 DBCF_DECL_SIMD8F static dbcf_simd8f dbcF_set8f(float v0,float v1,float v2,float v3,float v4,float v5,float v6,float v7) {return (__extension__ (dbcf_simd8f){v0,v1,v2,v3,v4,v5,v6,v7});}
 DBCF_DECL_SIMD8F static dbcf_simd8f dbcF_fill8f(float v) {return dbcF_set8f(v,v,v,v,v,v,v,v);}
+DBCF_DECL_SIMD8F static dbcf_simd8f dbcF_add8f(dbcf_simd8f l,dbcf_simd8f r) {return l+r;}
+DBCF_DECL_SIMD8F static dbcf_simd8f dbcF_sub8f(dbcf_simd8f l,dbcf_simd8f r) {return l-r;}
+DBCF_DECL_SIMD8F static dbcf_simd8f dbcF_mul8f(dbcf_simd8f l,dbcf_simd8f r) {return l*r;}
 #endif
 #if !defined(DBC_FFT_NO_DOUBLE) && !defined(DBCF_NO_SIMD4D)
 DBCF_DECL_SIMD4D DBCF_DEF_SIMD_LOAD (dbcF_load4d ,dbcf_simd4d,1)
@@ -1023,6 +1032,9 @@ DBCF_DECL_SIMD4D DBCF_DEF_SIMD_LOAD (dbcF_load4d_aligned ,dbcf_simd4d,32)
 DBCF_DECL_SIMD4D DBCF_DEF_SIMD_STORE(dbcF_store4d_aligned,dbcf_simd4d,32)
 DBCF_DECL_SIMD4D static dbcf_simd4d dbcF_set4d(double v0,double v1,double v2,double v3) {return (__extension__ (dbcf_simd4d){v0,v1,v2,v3});}
 DBCF_DECL_SIMD4D static dbcf_simd4d dbcF_fill4d(double v) {return dbcF_set4d(v,v,v,v);}
+DBCF_DECL_SIMD4D static dbcf_simd4d dbcF_add4d(dbcf_simd4d l,dbcf_simd4d r) {return l+r;}
+DBCF_DECL_SIMD4D static dbcf_simd4d dbcF_sub4d(dbcf_simd4d l,dbcf_simd4d r) {return l-r;}
+DBCF_DECL_SIMD4D static dbcf_simd4d dbcF_mul4d(dbcf_simd4d l,dbcf_simd4d r) {return l*r;}
 #endif
 #if !defined(DBC_FFT_NO_FLOAT) && !defined(DBCF_NO_SIMD16F)
 DBCF_DECL_SIMD16F DBCF_DEF_SIMD_LOAD (dbcF_load16f ,dbcf_simd16f,1)
@@ -1031,6 +1043,9 @@ DBCF_DECL_SIMD16F DBCF_DEF_SIMD_LOAD (dbcF_load16f_aligned ,dbcf_simd16f,64)
 DBCF_DECL_SIMD16F DBCF_DEF_SIMD_STORE(dbcF_store16f_aligned,dbcf_simd16f,64)
 DBCF_DECL_SIMD16F static dbcf_simd16f dbcF_set16f(float v0,float v1,float v2,float v3,float v4,float v5,float v6,float v7,float v8,float v9,float v10,float v11,float v12,float v13,float v14,float v15) {return (__extension__ (dbcf_simd16f){v0,v1,v2,v3,v4,v5,v6,v7,v8,v9,v10,v11,v12,v13,v14,v15});}
 DBCF_DECL_SIMD16F static dbcf_simd16f dbcF_fill16f(float v) {return dbcF_set16f(v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v);}
+DBCF_DECL_SIMD16F static dbcf_simd16f dbcF_add16f(dbcf_simd16f l,dbcf_simd16f r) {return l+r;}
+DBCF_DECL_SIMD16F static dbcf_simd16f dbcF_sub16f(dbcf_simd16f l,dbcf_simd16f r) {return l-r;}
+DBCF_DECL_SIMD16F static dbcf_simd16f dbcF_mul16f(dbcf_simd16f l,dbcf_simd16f r) {return l*r;}
 #endif
 #if !defined(DBC_FFT_NO_DOUBLE) && !defined(DBCF_NO_SIMD8D)
 DBCF_DECL_SIMD8D DBCF_DEF_SIMD_LOAD (dbcF_load8d ,dbcf_simd8d,1)
@@ -1039,6 +1054,9 @@ DBCF_DECL_SIMD8D DBCF_DEF_SIMD_LOAD (dbcF_load8d_aligned ,dbcf_simd8d,64)
 DBCF_DECL_SIMD8D DBCF_DEF_SIMD_STORE(dbcF_store8d_aligned,dbcf_simd8d,64)
 DBCF_DECL_SIMD8D static dbcf_simd8d dbcF_set8d(double v0,double v1,double v2,double v3,double v4,double v5,double v6,double v7) {return (__extension__ (dbcf_simd8d){v0,v1,v2,v3,v4,v5,v6,v7});}
 DBCF_DECL_SIMD8D static dbcf_simd8d dbcF_fill8d(double v) {return dbcF_set8d(v,v,v,v,v,v,v,v);}
+DBCF_DECL_SIMD8D static dbcf_simd8d dbcF_add8d(dbcf_simd8d l,dbcf_simd8d r) {return l+r;}
+DBCF_DECL_SIMD8D static dbcf_simd8d dbcF_sub8d(dbcf_simd8d l,dbcf_simd8d r) {return l-r;}
+DBCF_DECL_SIMD8D static dbcf_simd8d dbcF_mul8d(dbcf_simd8d l,dbcf_simd8d r) {return l*r;}
 #endif
 
 #elif defined(DBCF_X86_OR_X64)
@@ -1050,6 +1068,9 @@ DBCF_DECL_SIMD4F static dbcf_simd4f dbcF_load4f_aligned (const void *p) {return 
 DBCF_DECL_SIMD4F static void        dbcF_store4f_aligned(dbcf_simd4f v,void *p) {_mm_store_ps((float*)p,v);}
 DBCF_DECL_SIMD4F static dbcf_simd4f dbcF_set4f(float v0,float v1,float v2,float v3) {return _mm_setr_ps(v0,v1,v2,v3);}
 DBCF_DECL_SIMD4F static dbcf_simd4f dbcF_fill4f(float v) {return dbcF_set4f(v,v,v,v);}
+DBCF_DECL_SIMD4F static dbcf_simd4f dbcF_add4f(dbcf_simd4f l,dbcf_simd4f r) {return _mm_add_ps(l,r);}
+DBCF_DECL_SIMD4F static dbcf_simd4f dbcF_sub4f(dbcf_simd4f l,dbcf_simd4f r) {return _mm_sub_ps(l,r);}
+DBCF_DECL_SIMD4F static dbcf_simd4f dbcF_mul4f(dbcf_simd4f l,dbcf_simd4f r) {return _mm_mul_ps(l,r);}
 #endif
 #if !defined(DBC_FFT_NO_DOUBLE) && !defined(DBCF_NO_SIMD2D)
 DBCF_DECL_SIMD2D static dbcf_simd2d dbcF_load2d (const void *p) {return _mm_loadu_pd((const double*)p);}
@@ -1058,6 +1079,9 @@ DBCF_DECL_SIMD2D static dbcf_simd2d dbcF_load2d_aligned (const void *p) {return 
 DBCF_DECL_SIMD2D static void        dbcF_store2d_aligned(dbcf_simd2d v,void *p) {_mm_store_pd((double*)p,v);}
 DBCF_DECL_SIMD2D static dbcf_simd2d dbcF_set2d(double v0,double v1) {return _mm_setr_pd(v0,v1);}
 DBCF_DECL_SIMD2D static dbcf_simd2d dbcF_fill2d(double v) {return dbcF_set2d(v,v);}
+DBCF_DECL_SIMD2D static dbcf_simd2d dbcF_add2d(dbcf_simd2d l,dbcf_simd2d r) {return _mm_add_pd(l,r);}
+DBCF_DECL_SIMD2D static dbcf_simd2d dbcF_sub2d(dbcf_simd2d l,dbcf_simd2d r) {return _mm_sub_pd(l,r);}
+DBCF_DECL_SIMD2D static dbcf_simd2d dbcF_mul2d(dbcf_simd2d l,dbcf_simd2d r) {return _mm_mul_pd(l,r);}
 #endif
 #if !defined(DBC_FFT_NO_FLOAT) && !defined(DBCF_NO_SIMD8F)
 DBCF_DECL_SIMD8F static dbcf_simd8f dbcF_load8f (const void *p) {return _mm256_loadu_ps((const float*)p);}
@@ -1066,6 +1090,9 @@ DBCF_DECL_SIMD8F static dbcf_simd8f dbcF_load8f_aligned (const void *p) {return 
 DBCF_DECL_SIMD8F static void        dbcF_store8f_aligned(dbcf_simd8f v,void *p) {_mm256_store_ps((float*)p,v);}
 DBCF_DECL_SIMD8F static dbcf_simd8f dbcF_set8f(float v0,float v1,float v2,float v3,float v4,float v5,float v6,float v7) {return _mm256_setr_ps(v0,v1,v2,v3,v4,v5,v6,v7);}
 DBCF_DECL_SIMD8F static dbcf_simd8f dbcF_fill8f(float v) {return dbcF_set8f(v,v,v,v,v,v,v,v);}
+DBCF_DECL_SIMD8F static dbcf_simd8f dbcF_add8f(dbcf_simd8f l,dbcf_simd8f r) {return _mm256_add_ps(l,r);}
+DBCF_DECL_SIMD8F static dbcf_simd8f dbcF_sub8f(dbcf_simd8f l,dbcf_simd8f r) {return _mm256_sub_ps(l,r);}
+DBCF_DECL_SIMD8F static dbcf_simd8f dbcF_mul8f(dbcf_simd8f l,dbcf_simd8f r) {return _mm256_mul_ps(l,r);}
 #endif
 #if !defined(DBC_FFT_NO_DOUBLE) && !defined(DBCF_NO_SIMD4D)
 DBCF_DECL_SIMD4D static dbcf_simd4d dbcF_load4d (const void *p) {return _mm256_loadu_pd((const double*)p);}
@@ -1074,6 +1101,9 @@ DBCF_DECL_SIMD4D static dbcf_simd4d dbcF_load4d_aligned (const void *p) {return 
 DBCF_DECL_SIMD4D static void        dbcF_store4d_aligned(dbcf_simd4d v,void *p) {_mm256_store_pd((double*)p,v);}
 DBCF_DECL_SIMD4D static dbcf_simd4d dbcF_set4d(double v0,double v1,double v2,double v3) {return _mm256_setr_pd(v0,v1,v2,v3);}
 DBCF_DECL_SIMD4D static dbcf_simd4d dbcF_fill4d(double v) {return dbcF_set4d(v,v,v,v);}
+DBCF_DECL_SIMD4D static dbcf_simd4d dbcF_add4d(dbcf_simd4d l,dbcf_simd4d r) {return _mm256_add_pd(l,r);}
+DBCF_DECL_SIMD4D static dbcf_simd4d dbcF_sub4d(dbcf_simd4d l,dbcf_simd4d r) {return _mm256_sub_pd(l,r);}
+DBCF_DECL_SIMD4D static dbcf_simd4d dbcF_mul4d(dbcf_simd4d l,dbcf_simd4d r) {return _mm256_mul_pd(l,r);}
 #endif
 #if !defined(DBC_FFT_NO_FLOAT) && !defined(DBCF_NO_SIMD16F)
 DBCF_DECL_SIMD16F static dbcf_simd16f dbcF_load16f (const void *p) {return _mm512_loadu_ps((const float*)p);}
@@ -1082,19 +1112,25 @@ DBCF_DECL_SIMD16F static dbcf_simd16f dbcF_load16f_aligned (const void *p) {retu
 DBCF_DECL_SIMD16F static void        dbcF_store16f_aligned(dbcf_simd16f v,void *p) {_mm512_store_ps((float*)p,v);}
 DBCF_DECL_SIMD16F static dbcf_simd16f dbcF_set16f(float v0,float v1,float v2,float v3,float v4,float v5,float v6,float v7,float v8,float v9,float v10,float v11,float v12,float v13,float v14,float v15) {return _mm512_setr_ps(v0,v1,v2,v3,v4,v5,v6,v7,v8,v9,v10,v11,v12,v13,v14,v15);}
 DBCF_DECL_SIMD16F static dbcf_simd16f dbcF_fill16f(float v) {return dbcF_set16f(v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v);}
+DBCF_DECL_SIMD16F static dbcf_simd16f dbcF_add16f(dbcf_simd16f l,dbcf_simd16f r) {return _mm512_add_ps(l,r);}
+DBCF_DECL_SIMD16F static dbcf_simd16f dbcF_sub16f(dbcf_simd16f l,dbcf_simd16f r) {return _mm512_sub_ps(l,r);}
+DBCF_DECL_SIMD16F static dbcf_simd16f dbcF_mul16f(dbcf_simd16f l,dbcf_simd16f r) {return _mm512_mul_ps(l,r);}
 #endif
 #if !defined(DBC_FFT_NO_DOUBLE) && !defined(DBCF_NO_SIMD8D)
 DBCF_DECL_SIMD8D static dbcf_simd8d dbcF_load8d (const void *p) {return _mm512_loadu_pd((const double*)p);}
 DBCF_DECL_SIMD8D static void        dbcF_store8d(dbcf_simd8d v,void *p) {_mm512_storeu_pd((double*)p,v);}
 DBCF_DECL_SIMD8D static dbcf_simd8d dbcF_load8d_aligned (const void *p) {return _mm512_load_pd((const double*)p);}
 DBCF_DECL_SIMD8D static void        dbcF_store8d_aligned(dbcf_simd8d v,void *p) {_mm512_store_pd((double*)p,v);}
-DBCF_DECL_SIMD8D static dbcf_simd8d dbcF_set8d(double v0,double v1,double v2,double v3,double v0,double v1,double v2,double v3,double v4,double v5,double v6,double v7) {return _mm512_setr_pd(v0,v1,v2,v3,v4,v5,v6,v7);}
+DBCF_DECL_SIMD8D static dbcf_simd8d dbcF_set8d(double v0,double v1,double v2,double v3,double v4,double v5,double v6,double v7) {return _mm512_setr_pd(v0,v1,v2,v3,v4,v5,v6,v7);}
 DBCF_DECL_SIMD8D static dbcf_simd8d dbcF_fill8d(double v) {return dbcF_set8d(v,v,v,v,v,v,v,v);}
+DBCF_DECL_SIMD8D static dbcf_simd8d dbcF_add8d(dbcf_simd8d l,dbcf_simd8d r) {return _mm512_add_pd(l,r);}
+DBCF_DECL_SIMD8D static dbcf_simd8d dbcF_sub8d(dbcf_simd8d l,dbcf_simd8d r) {return _mm512_sub_pd(l,r);}
+DBCF_DECL_SIMD8D static dbcf_simd8d dbcF_mul8d(dbcf_simd8d l,dbcf_simd8d r) {return _mm512_mul_pd(l,r);}
 #endif
 
 #endif /* defined(DBC_FFT_USE_VECTOR_EXTENSIONS) */
 
-#define DBCF_DEF_SIMD_BLOCK(name,type,size,simd,load_t,load_d,store_d,fill,cexp)\
+#define DBCF_DEF_SIMD_BLOCK(name,type,size,simd,load_t,load_d,store_d,fill,add,sub,mul,cexp)\
 static void name(                                                                             \
     dbcf_index log2n,                                                                         \
     dbcf_index log2b,                                                                         \
@@ -1113,12 +1149,12 @@ static void name(                                                               
         for(i=0;i<b;i+=size)                                                                  \
         {                                                                                     \
             simd TR=load_t(tr+i),TI=load_t(ti+i);                                             \
-            simd c=CC*TR-SS*TI,s=SS*TR+CC*TI;                                                 \
+            simd c=sub(mul(CC,TR),mul(SS,TI)),s=add(mul(SS,TR),mul(CC,TI));                   \
             simd xl=load_d(LR+i),yl=load_d(LI+i);                                             \
             simd xr=load_d(HR+i),yr=load_d(HI+i);                                             \
-            simd x=c*xr-s*yr,y=s*xr+c*yr;                                                     \
-            store_d(xl+x,LR+i);store_d(yl+y,LI+i);                                            \
-            store_d(xl-x,HR+i);store_d(yl-y,HI+i);                                            \
+            simd x=sub(mul(c,xr),mul(s,yr)),y=add(mul(s,xr),mul(c,yr));                       \
+            store_d(add(xl,x),LR+i);store_d(add(yl,y),LI+i);                                  \
+            store_d(sub(xl,x),HR+i);store_d(sub(yl,y),HI+i);                                  \
         }                                                                                     \
     }                                                                                         \
     else                                                                                      \
@@ -1132,7 +1168,7 @@ static void name(                                                               
     }                                                                                         \
 }
 
-#define DBCF_DEF_SIMD_PASS(name,type,size,simd,load_t,load_d,store_d,block)\
+#define DBCF_DEF_SIMD_PASS(name,type,size,simd,load_t,load_d,store_d,add,sub,mul,block)\
 static void name(                                                                             \
     dbcf_index log2n,                                                                         \
     dbcf_index log2c,                                                                         \
@@ -1162,16 +1198,16 @@ static void name(                                                               
                 simd c=load_t(tr+d),s=load_t(ti+d);                                           \
                 simd xl=load_d(LR+d),yl=load_d(LI+d);                                         \
                 simd xr=load_d(HR+d),yr=load_d(HI+d);                                         \
-                simd x=c*xr-s*yr,y=s*xr+c*yr;                                                 \
-                store_d(xl+x,LR+d);store_d(yl+y,LI+d);                                        \
-                store_d(xl-x,HR+d);store_d(yl-y,HI+d);                                        \
+                simd x=sub(mul(c,xr),mul(s,yr)),y=add(mul(s,xr),mul(c,yr));                   \
+                store_d(add(xl,x),LR+d);store_d(add(yl,y),LI+d);                              \
+                store_d(sub(xl,x),HR+d);store_d(sub(yl,y),HI+d);                              \
                 d+=size;                                                                      \
                 c=load_t(tr+d);s=load_t(ti+d);                                                \
                 xl=load_d(LR+d);yl=load_d(LI+d);                                              \
                 xr=load_d(HR+d);yr=load_d(HI+d);                                              \
-                x=c*xr-s*yr;y=s*xr+c*yr;                                                      \
-                store_d(xl+x,LR+d);store_d(yl+y,LI+d);                                        \
-                store_d(xl-x,HR+d);store_d(yl-y,HI+d);                                        \
+                x=sub(mul(c,xr),mul(s,yr));y=add(mul(s,xr),mul(c,yr));                        \
+                store_d(add(xl,x),LR+d);store_d(add(yl,y),LI+d);                              \
+                store_d(sub(xl,x),HR+d);store_d(sub(yl,y),HI+d);                              \
                 d+=size;                                                                      \
             }                                                                                 \
             LR+=n;LI+=n;                                                                      \
@@ -1182,9 +1218,9 @@ static void name(                                                               
             simd C=load_t(tr),S=load_t(ti);                                                   \
             simd xl=load_d(LR),yl=load_d(LI);                                                 \
             simd xr=load_d(HR),yr=load_d(HI);                                                 \
-            simd x=C*xr-S*yr,y=S*xr+C*yr;                                                     \
-            store_d(xl+x,LR);store_d(yl+y,LI);                                                \
-            store_d(xl-x,HR);store_d(yl-y,HI);                                                \
+            simd x=sub(mul(C,xr),mul(S,yr)),y=add(mul(S,xr),mul(C,yr));                       \
+            store_d(add(xl,x),LR);store_d(add(yl,y),LI);                                      \
+            store_d(sub(xl,x),HR);store_d(sub(yl,y),HI);                                      \
             LR+=n;LI+=n;                                                                      \
             HR+=n;HI+=n;                                                                      \
         }                                                                                     \
@@ -1204,7 +1240,7 @@ static void name(                                                               
 #define DBCF_DEF_SIMD_FFT8(name,type,suffix,lsuffix)\
 static void name(type *real,type *imag,int inverse) {dbcF_fft8_##suffix(real,imag,1,1,inverse,0.70710678118654752438##lsuffix);}
 
-#define DBCF_DEF_SIMD_COMPUTE_TWIDDLES(name,type,size,simd,lsuffix,load,store,fill,cexpm1)\
+#define DBCF_DEF_SIMD_COMPUTE_TWIDDLES(name,type,size,simd,lsuffix,load,store,fill,add,sub,mul,cexpm1)\
 static void name(dbcf_index log2n,dbcf_index log2b,type *real,type *imag,int inverse)         \
 {                                                                                             \
     dbcf_index i;                                                                             \
@@ -1224,8 +1260,8 @@ static void name(dbcf_index log2n,dbcf_index log2b,type *real,type *imag,int inv
             {                                                                                 \
                 simd R=load(real+j);                                                          \
                 simd I=load(imag+j);                                                          \
-                store((X*R-Y*I)+(X+R),real+k+j);                                              \
-                store((Y*R+X*I)+(Y+I),imag+k+j);                                              \
+                store(add(sub(mul(X,R),mul(Y,I)),add(X,R)),real+k+j);                         \
+                store(add(add(mul(Y,R),mul(X,I)),add(Y,I)),imag+k+j);                         \
             }                                                                                 \
         }                                                                                     \
         else for(j=0;j<k;++j)                                                                 \
@@ -1239,16 +1275,16 @@ static void name(dbcf_index log2n,dbcf_index log2b,type *real,type *imag,int inv
 }
 
 #define DBCF_DEF_SIMD_FUNCTIONS(decl,type,size,suffix,lsuffix)\
-    decl DBCF_DEF_SIMD_BLOCK(dbcF_butterfly_block_##size##suffix##_uu,type,size,dbcf_simd##size##suffix,dbcF_load##size##suffix          ,dbcF_load##size##suffix          ,dbcF_store##size##suffix          ,dbcF_fill##size##suffix,dbcF_cexp_##suffix)\
-    decl DBCF_DEF_SIMD_BLOCK(dbcF_butterfly_block_##size##suffix##_au,type,size,dbcf_simd##size##suffix,dbcF_load##size##suffix##_aligned,dbcF_load##size##suffix          ,dbcF_store##size##suffix          ,dbcF_fill##size##suffix,dbcF_cexp_##suffix)\
-    decl DBCF_DEF_SIMD_BLOCK(dbcF_butterfly_block_##size##suffix##_ua,type,size,dbcf_simd##size##suffix,dbcF_load##size##suffix          ,dbcF_load##size##suffix##_aligned,dbcF_store##size##suffix##_aligned,dbcF_fill##size##suffix,dbcF_cexp_##suffix)\
-    decl DBCF_DEF_SIMD_BLOCK(dbcF_butterfly_block_##size##suffix##_aa,type,size,dbcf_simd##size##suffix,dbcF_load##size##suffix##_aligned,dbcF_load##size##suffix##_aligned,dbcF_store##size##suffix##_aligned,dbcF_fill##size##suffix,dbcF_cexp_##suffix)\
-    decl DBCF_DEF_SIMD_PASS(dbcF_butterfly_pass_##size##suffix##_uu,type,size,dbcf_simd##size##suffix,dbcF_load##size##suffix          ,dbcF_load##size##suffix          ,dbcF_store##size##suffix          ,dbcF_butterfly_block_##size##suffix##_uu)\
-    decl DBCF_DEF_SIMD_PASS(dbcF_butterfly_pass_##size##suffix##_au,type,size,dbcf_simd##size##suffix,dbcF_load##size##suffix##_aligned,dbcF_load##size##suffix          ,dbcF_store##size##suffix          ,dbcF_butterfly_block_##size##suffix##_au)\
-    decl DBCF_DEF_SIMD_PASS(dbcF_butterfly_pass_##size##suffix##_ua,type,size,dbcf_simd##size##suffix,dbcF_load##size##suffix          ,dbcF_load##size##suffix##_aligned,dbcF_store##size##suffix##_aligned,dbcF_butterfly_block_##size##suffix##_ua)\
-    decl DBCF_DEF_SIMD_PASS(dbcF_butterfly_pass_##size##suffix##_aa,type,size,dbcf_simd##size##suffix,dbcF_load##size##suffix##_aligned,dbcF_load##size##suffix##_aligned,dbcF_store##size##suffix##_aligned,dbcF_butterfly_block_##size##suffix##_aa)\
-    decl DBCF_DEF_SIMD_COMPUTE_TWIDDLES(dbcF_compute_twiddles_##size##suffix##_u,type,size,dbcf_simd##size##suffix,lsuffix,dbcF_load##size##suffix          ,dbcF_store##size##suffix          ,dbcF_fill##size##suffix,dbcF_cexpm1_##suffix)\
-    decl DBCF_DEF_SIMD_COMPUTE_TWIDDLES(dbcF_compute_twiddles_##size##suffix##_a,type,size,dbcf_simd##size##suffix,lsuffix,dbcF_load##size##suffix##_aligned,dbcF_store##size##suffix##_aligned,dbcF_fill##size##suffix,dbcF_cexpm1_##suffix)\
+    decl DBCF_DEF_SIMD_BLOCK(dbcF_butterfly_block_##size##suffix##_uu,type,size,dbcf_simd##size##suffix,dbcF_load##size##suffix          ,dbcF_load##size##suffix          ,dbcF_store##size##suffix          ,dbcF_fill##size##suffix,dbcF_add##size##suffix,dbcF_sub##size##suffix,dbcF_mul##size##suffix,dbcF_cexp_##suffix)\
+    decl DBCF_DEF_SIMD_BLOCK(dbcF_butterfly_block_##size##suffix##_au,type,size,dbcf_simd##size##suffix,dbcF_load##size##suffix##_aligned,dbcF_load##size##suffix          ,dbcF_store##size##suffix          ,dbcF_fill##size##suffix,dbcF_add##size##suffix,dbcF_sub##size##suffix,dbcF_mul##size##suffix,dbcF_cexp_##suffix)\
+    decl DBCF_DEF_SIMD_BLOCK(dbcF_butterfly_block_##size##suffix##_ua,type,size,dbcf_simd##size##suffix,dbcF_load##size##suffix          ,dbcF_load##size##suffix##_aligned,dbcF_store##size##suffix##_aligned,dbcF_fill##size##suffix,dbcF_add##size##suffix,dbcF_sub##size##suffix,dbcF_mul##size##suffix,dbcF_cexp_##suffix)\
+    decl DBCF_DEF_SIMD_BLOCK(dbcF_butterfly_block_##size##suffix##_aa,type,size,dbcf_simd##size##suffix,dbcF_load##size##suffix##_aligned,dbcF_load##size##suffix##_aligned,dbcF_store##size##suffix##_aligned,dbcF_fill##size##suffix,dbcF_add##size##suffix,dbcF_sub##size##suffix,dbcF_mul##size##suffix,dbcF_cexp_##suffix)\
+    decl DBCF_DEF_SIMD_PASS(dbcF_butterfly_pass_##size##suffix##_uu,type,size,dbcf_simd##size##suffix,dbcF_load##size##suffix          ,dbcF_load##size##suffix          ,dbcF_store##size##suffix          ,dbcF_add##size##suffix,dbcF_sub##size##suffix,dbcF_mul##size##suffix,dbcF_butterfly_block_##size##suffix##_uu)\
+    decl DBCF_DEF_SIMD_PASS(dbcF_butterfly_pass_##size##suffix##_au,type,size,dbcf_simd##size##suffix,dbcF_load##size##suffix##_aligned,dbcF_load##size##suffix          ,dbcF_store##size##suffix          ,dbcF_add##size##suffix,dbcF_sub##size##suffix,dbcF_mul##size##suffix,dbcF_butterfly_block_##size##suffix##_au)\
+    decl DBCF_DEF_SIMD_PASS(dbcF_butterfly_pass_##size##suffix##_ua,type,size,dbcf_simd##size##suffix,dbcF_load##size##suffix          ,dbcF_load##size##suffix##_aligned,dbcF_store##size##suffix##_aligned,dbcF_add##size##suffix,dbcF_sub##size##suffix,dbcF_mul##size##suffix,dbcF_butterfly_block_##size##suffix##_ua)\
+    decl DBCF_DEF_SIMD_PASS(dbcF_butterfly_pass_##size##suffix##_aa,type,size,dbcf_simd##size##suffix,dbcF_load##size##suffix##_aligned,dbcF_load##size##suffix##_aligned,dbcF_store##size##suffix##_aligned,dbcF_add##size##suffix,dbcF_sub##size##suffix,dbcF_mul##size##suffix,dbcF_butterfly_block_##size##suffix##_aa)\
+    decl DBCF_DEF_SIMD_COMPUTE_TWIDDLES(dbcF_compute_twiddles_##size##suffix##_u,type,size,dbcf_simd##size##suffix,lsuffix,dbcF_load##size##suffix          ,dbcF_store##size##suffix          ,dbcF_fill##size##suffix,dbcF_add##size##suffix,dbcF_sub##size##suffix,dbcF_mul##size##suffix,dbcF_cexpm1_##suffix)\
+    decl DBCF_DEF_SIMD_COMPUTE_TWIDDLES(dbcF_compute_twiddles_##size##suffix##_a,type,size,dbcf_simd##size##suffix,lsuffix,dbcF_load##size##suffix##_aligned,dbcF_store##size##suffix##_aligned,dbcF_fill##size##suffix,dbcF_add##size##suffix,dbcF_sub##size##suffix,dbcF_mul##size##suffix,dbcF_cexpm1_##suffix)\
     decl DBCF_DEF_SIMD_FFT8(dbcF_fft8_##size##suffix,type,suffix,lsuffix)
 
 #ifndef DBC_FFT_NO_FLOAT
@@ -1262,28 +1298,24 @@ static void dbcF_cexp_d(dbcf_index log2n,double *real,double *imag);
 static void dbcF_fft8_d(double *real,double *imag,dbcf_index real_stride,dbcf_index imag_stride,int inverse,double c);
 #endif
 
-#ifndef DBC_FFT_NO_FLOAT
+#if !defined(DBC_FFT_NO_FLOAT) && !defined(DBCF_NO_SIMD4F)
 DBCF_DEF_SIMD_FUNCTIONS(DBCF_DECL_SIMD4F ,float , 4,f,f)
 #endif
-#ifndef DBC_FFT_NO_DOUBLE
+#if !defined(DBC_FFT_NO_DOUBLE) && !defined(DBCF_NO_SIMD2D)
 DBCF_DEF_SIMD_FUNCTIONS(DBCF_DECL_SIMD2D ,double, 2,d,e0)
 #endif
-#ifndef DBC_FFT_NO_AVX
-#ifndef DBC_FFT_NO_FLOAT
+#if !defined(DBC_FFT_NO_FLOAT) && !defined(DBCF_NO_SIMD8F)
 DBCF_DEF_SIMD_FUNCTIONS(DBCF_DECL_SIMD8F ,float , 8,f,f)
 #endif
-#ifndef DBC_FFT_NO_DOUBLE
+#if !defined(DBC_FFT_NO_DOUBLE) && !defined(DBCF_NO_SIMD4D)
 DBCF_DEF_SIMD_FUNCTIONS(DBCF_DECL_SIMD4D ,double, 4,d,e0)
 #endif
-#endif /* DBC_FFT_NO_AVX */
-#ifndef DBC_FFT_NO_AVX512
-#ifndef DBC_FFT_NO_FLOAT
+#if !defined(DBC_FFT_NO_FLOAT) && !defined(DBCF_NO_SIMD16F)
 DBCF_DEF_SIMD_FUNCTIONS(DBCF_DECL_SIMD16F,float ,16,f,f)
 #endif
-#ifndef DBC_FFT_NO_DOUBLE
+#if !defined(DBC_FFT_NO_DOUBLE) && !defined(DBCF_NO_SIMD8D)
 DBCF_DEF_SIMD_FUNCTIONS(DBCF_DECL_SIMD8D ,double, 8,d,e0)
 #endif
-#endif /* DBC_FFT_NO_AVX512 */
 
 #define DBCF_TRY_SIMD_PASS(type,size,suffix,SUFFIX)\
     if(simd_flags&DBCF_HAS_SIMD##size##SUFFIX)                                                                        \

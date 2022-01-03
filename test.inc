@@ -54,12 +54,12 @@ static void NAME(generate_)(dbcf_index seed,dbcf_index n,Type *real,Type *imag)
     }
 }
 
-
 static double NAME(test_time_)(dbcf_index n,const Type *src_real,const Type *src_imag,Type *dst_real,Type *dst_imag,int interleaved)
 {
     dbcf_index i;
     double t=get_cpu_time();
-    dbcf_index m=DBCF_POW2(17)/n;
+    dbcf_index m=DBCF_POW2(21)/n;
+    if(sizeof(Type)>=16) m/=8;
     if(n&(n-1)) m/=10;
     if(m==0) m=1;
     if(interleaved) for(i=0;i<m;++i) NAME2(dbc_fft_,s)(n,src_real,src_real+1,2,2,dst_real,dst_real+1,2,2,CAST(Type,1.0));

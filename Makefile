@@ -26,7 +26,7 @@ endif
 .PHONY: cpp c preprocessed compress clean
 
 cpp:
-	g++ -std=c++11 -Wall -Wextra -Wconversion -Wsign-conversion $(ARCHFLAGS) -DDBC_FFT_CACHE_CPU_DETECTION -DUSE_FLOAT128 -DUSE_FIXEDPOINT -fext-numeric-literals -O3 -s -o $(OUTPUT) check.cpp -lquadmath
+	g++ -std=c++11 -Wall -Wextra -Wconversion -Wsign-conversion $(ARCHFLAGS) -DDBC_FFT_CACHE_CPU_DETECTION -DUSE_FLOAT128 -DUSE_FIXEDPOINT -fext-numeric-literals -Ofast -s -o $(OUTPUT) check.cpp -lquadmath
 
 c:
 	gcc -std=c99 -Wpedantic -Wall -Wextra -Wconversion -Wsign-conversion $(ARCHFLAGS) -DDBC_FFT_CACHE_CPU_DETECTION -DUSE_FLOAT128 -O3 -s -o $(OUTPUT) check.c -lm -lquadmath

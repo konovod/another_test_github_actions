@@ -42,7 +42,7 @@ UNEXPANDED(#include <time.h>)
 #undef DBC_FFT_INSTANTIATION
 #endif /* defined(__GNUC__) && (defined(__cplusplus) || (__STDC_VERSION__>=199901L)) && defined(USE_FLOAT128) */
 
-#if (__cplusplus>=201103L) && defined(USE_FIXEDPOINT)
+#if defined(__cplusplus) && defined(USE_FIXEDPOINT)
 /* Custom type example: fixed-point. */
 
 /*
@@ -142,7 +142,7 @@ static void cexpm1_npot_x(dbcf_index p,dbcf_index q,fix *real,fix *imag)
 #undef DBCF_ONE
 #endif /* NO_LITERALS */
 #undef DBC_FFT_INSTANTIATION
-#endif /* (__cplusplus>=201103L) && defined(USE_FIXEDPOINT) */
+#endif /* defined(__cplusplus) && defined(USE_FIXEDPOINT) */
 
 static double get_cpu_time()
 {
@@ -191,7 +191,7 @@ union Data
 #if defined(__GNUC__) && (defined(__cplusplus) || (__STDC_VERSION__>=199901L)) && defined(USE_FLOAT128)
     __float128  buf_q[MAXB/sizeof(__float128)];
 #endif
-#if (__cplusplus>=201103L) && defined(USE_FIXEDPOINT)
+#if defined(__cplusplus) && defined(USE_FIXEDPOINT)
     fix buf_x[MAXB/sizeof(fix)];
 #endif
     struct Mixed
@@ -239,10 +239,12 @@ static dbcf_index bitreverse_bruteforce(dbcf_index i,dbcf_index k)
 template<typename T,typename S>
 static inline T cast(const S &v) {return (T)v;}
 
+#if defined(USE_FIXEDPOINT)
 template<> inline double cast<double,fix>(const fix &v) {return v.to_double();}
 template<> inline fix cast<fix,double>(const double &v) {return fix::from_double(v);}
 template<> inline dbcf_index cast<dbcf_index,fix>(const fix &v) {return (dbcf_index)v.to_double();}
 template<> inline fix cast<fix,dbcf_index>(const dbcf_index &v) {return fix::from_double((double)v);}
+#endif
 
 #define CAST(Type,value) (cast<Type>(value))
 #else
