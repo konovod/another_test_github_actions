@@ -22,7 +22,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: fft_${{github.sha}}
-          path: release/check.exe
+          path: check.exe
     build-linux:
       runs-on: ubuntu-latest
       steps:
