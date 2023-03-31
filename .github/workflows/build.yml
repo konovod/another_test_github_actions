@@ -11,23 +11,22 @@ jobs:
       runs-on: windows-latest
       steps:
       - uses: actions/checkout@v2
-      - name: Build
-        shell: cmd
+      - name: Install Crystal
+        uses: crystal-lang/install-crystal@v1
+      - name: Download OpenBLAS
+        shell: powershell
+        run:
+          Invoke-WebRequest -Uri "https://github.com/xianyi/OpenBLAS/releases/download/v0.3.22/OpenBLAS-0.3.22-x64.zip" `
+          -OutFile ./OpenBLAS.zip
+      - name: Unzip OpenBLAS
+        shell: powershell
         run: |
-          call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvars64.bat"
-          cl /O2 /MT check.cpp
-          dir
-          check.exe
-      - name: Upload Artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: fft_${{github.sha}}
-          path: check.exe
-    build-linux:
-      runs-on: ubuntu-latest
-      steps:
-      - uses: actions/checkout@v2
-      - name: Build
-        run: make
-      - name: Test
-        run: ./check
+          mkdir OpenBLAS
+          move OpenBLAS.zip ./OpenBLAS
+          cd OpenBLAS
+          7z x -y OpenBLAS.zip
+          copy .\bin\libopenblas.dll ..\
+          copy .\lib\libopenblas.lib ..\
+          cd ..
+          echo (crystal env CRYSTAL_LIBRARY_PATH)
+          copy .\libopenblas.lib (crystal env CRYSTAL_LIBRARY_PATH)
